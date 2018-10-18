@@ -31,7 +31,7 @@
             </li> 
             <li>
               <span>城市</span> 
-              <span @click="oncity">北京</span>
+              <span @click="oncity">{{mag.CityName?mag.CityName:'北京'}}</span>
             </li>
           </ul> 
 
@@ -44,7 +44,7 @@
           <div class="dealer-info">
             <p class="tip">选择报价经销商</p> 
               <ul class="dealer-ul" ref="dealerul">
-                <li class="dealer" v-for="(item,index) in list" :key="index" id="dealer">
+                <li class="dealer" v-for="(item,index) in list" :key="index" id="dealer" @click="onChoice(index)">
                   <p><span>{{item.dealerShortName}}</span> <span>{{item.vendorPrice}}万</span></p> 
                   <p><span>{{item.address}}</span> <span>{{item.saleRange}}</span></p>
                 </li>
@@ -54,7 +54,7 @@
       </div>  
 
       <div :class="flag?'city-type':'city-typeAction'">
-        <city></city>
+        <city v-on:headCallBack="headcall"></city>
       </div>
     </div>
 </template>
@@ -73,7 +73,8 @@ export default {
       result2:null,//手机号
       name:'',
       password:'',
-      flag:false
+      flag:false,
+      mag:''
     };
   },
   components:{
@@ -142,6 +143,15 @@ export default {
     //城市
     oncity(){
       this.flag = true;
+    },
+    //单选 多选
+    onChoice(index){
+      console.log(index)
+    },
+    headcall(mag,a){
+      this.flag = a;
+      this.mag = mag;
+      console.log('mag',this.mag,a)
     }
   },
   mounted() {

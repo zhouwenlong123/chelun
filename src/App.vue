@@ -1,11 +1,12 @@
 <template>
   <div id="app">
     <router-view/>
+    <loading></loading>
   </div>
 </template>
 
 <script>
-// import {mapState,mapMutations} from 'vuex';
+import {mapState,mapMutations} from 'vuex';
 import loading from '@/components/Loading';
 export default {
   name: "APP",
@@ -14,22 +15,6 @@ export default {
   },
   components:{
     loading
-  },
-  computed:{
-    // ...mapState({
-    //   LOADING:(state)=>{
-    //     return state.loading.LOADING
-    //   }
-    // })
-  },
-  methods:{
-    // ...mapMutations({
-    //    showLoading:'loading/showLoading',
-    //    hideLoading:'loading/hideLoading'
-    // })
-  },
-  mounted(){
-    // console.log(this.LOADING,'123');
   }
 };
 </script>

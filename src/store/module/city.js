@@ -13,7 +13,8 @@ const mutations = {//做数据处理 数据
     state.citylist = payload
   },
   updatacitylistid(state,payload){//城市数据id
-    // state.citylistid = payload;
+    state.citylistid = payload;
+    // console.log('payload',payload)
   }
 }
 

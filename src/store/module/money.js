@@ -34,9 +34,9 @@ const mutations = {
       carList[0].list.push(item);
     });
     state.yearArr = yearArr;
-    console.log('yearArr',yearArr)
+    // console.log('yearArr',yearArr)
     state.carList = carList;
-    console.log('carList',carList)
+    // console.log('carList',carList)
   }
 };
 

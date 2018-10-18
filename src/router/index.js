@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Router from 'vue-router'
-// import store from '../store/module/loading'
+import Routervue from 'vue-router'
+import store from '../store' 
 
 //按需加载
 const Index = () => import('@/views/index');
@@ -12,20 +12,13 @@ const cartype = () => import('@/views/cartype');
 const color = () => import('@/views/color');
 const money = () => import('@/views/money');
 
-Vue.use(Router)
 
-//导航守卫
-// Router.beforeEach((to,from,next)=>{
-//   store.commit('loading/showLoading')
-// })
-// Router.afterEach(() =>{
-//   setTimeout(() =>{
-//     store.commit('loading/hideLoading')
-//   },3000)
-// })
+Vue.use(Routervue)
 
 
-export default new Router({
+
+
+let router =  new Routervue({
   routes: [
     {
       path: '/index',
@@ -68,4 +61,15 @@ export default new Router({
     }
   ]
 })
+//导航守卫
+router.beforeEach((to,from,next)=>{
+  store.commit('loadingImg',true)
+  next()
+})
+router.afterEach(() =>{
+  setTimeout(() =>{
+    store.commit('loadingImg',false)
+  },500)
+})
 
+export default router

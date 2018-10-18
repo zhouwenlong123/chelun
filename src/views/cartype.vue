@@ -3,6 +3,11 @@
         <div class="flex-row">
             <p><span @click="oncolor">颜色</span><span @click="onmoney">车款</span></p>
         </div>
+        <div class="img-default">
+            <ul>
+                <li></li>
+            </ul>
+        </div>
     </div>
 </template>
 

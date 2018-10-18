@@ -58,11 +58,9 @@ export default {
           })
       })
       this.newList = newList;
-      console.log('newList',this.newList)
     }
   },
   mounted() {
-    this.getmoneylists();
   }
 };
 </script>
