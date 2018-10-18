@@ -60,6 +60,7 @@ export default {
     onTypeList(id) {
      this.flag = true; //侧边数据控制显示与隐藏
       getCarsystemList(id).then(res => {
+        _hmt.push(['_trackEvent','汽车报价','tap','品牌点击'])//百度统计埋点
         this.rightdata = res.data //赋值给变量进行组件传值
         // console.log( res.data)
       });

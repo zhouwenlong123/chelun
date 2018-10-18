@@ -7,7 +7,7 @@
 
       <div class="content">
         <div class="content-dl">
-            <dl class="dl">
+            <dl class="dl" @click="oncarcareful">
                <dt>
                   <img :src="details.serial&&details.serial.Picture" alt="">
                </dt>
@@ -47,6 +47,7 @@
                 <li class="dealer" v-for="(item,index) in list" :key="index" id="dealer" @click="onChoice(index)">
                   <p><span>{{item.dealerShortName}}</span> <span>{{item.vendorPrice}}万</span></p> 
                   <p><span>{{item.address}}</span> <span>{{item.saleRange}}</span></p>
+                  <el-checkbox @click="checked" class="checkbox"></el-checkbox>
                 </li>
               </ul>
           </div>
@@ -56,17 +57,23 @@
       <div :class="flag?'city-type':'city-typeAction'">
         <city v-on:headCallBack="headcall"></city>
       </div>
+
+      <div :class="show?'carcarefulActive':'carcareful'">
+         <carcareful  v-on:carefulList="carefuldata"></carcareful>
+      </div>
     </div>
 </template>
 
 <script>
 import {getdijiaList} from '../api/index';
 import { mapState, mapActions } from "vuex";
-import city from '@/components/city'
+import city from '@/components/city';
+import carcareful from '@/components/carcareful';
 export default {
   name: "",
   data() {
     return {
+      checked: true,
       details:{},//介绍
       list:[],//地区城市
       result1: null,//用户名
@@ -74,11 +81,14 @@ export default {
       name:'',
       password:'',
       flag:false,
-      mag:''
+      mag:'',
+      show:false,
+      value:''
     };
   },
   components:{
-     city
+     city,
+     carcareful
   },
   computed: {
     ...mapState({
@@ -146,16 +156,24 @@ export default {
     },
     //单选 多选
     onChoice(index){
-      console.log(index)
+      // console.log(index)
     },
-    headcall(mag,a){
+    headcall(mag,a){//接收子组件的数据
       this.flag = a;
       this.mag = mag;
-      console.log('mag',this.mag,a)
+      // console.log('mag',this.mag,a)
+    },
+    //车系数据
+    oncarcareful(){
+      this.show = true
+    },
+    carefuldata(value,a){
+      this.flag = a;
+      this.value = value;
+      // console.log('value',value)
     }
   },
   mounted() {
-    //  console.log('citylist',this.citylist)
      let inquiryId = this.$route.query.inquiryId;//接收低价数据id
      getdijiaList(inquiryId).then(res =>{
         this.details = res.data.details;//介绍
@@ -179,6 +197,36 @@ export default {
 }
 .el-button--small{
     padding: 10px 28px;
+}
+.carcareful{
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: #f4f4f4;
+  width: 100%;
+  height: 100%;
+  transform: translateY(100%);
+  transition: all 1s linear;
+}
+.carcarefulActive{
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: #f4f4f4;
+  width: 100%;
+  height: 100%;
+  transform: translateY(0%);
+  transition: all 1s linear;
+  z-index: 130;
+}
+.checkbox{
+   position: absolute;
+   left: 0;
+   top: 50%;
+   border-radius: 50%;
+}
+.el-checkbox__inner{
+  border-radius: 50%;
 }
 </style>
 
