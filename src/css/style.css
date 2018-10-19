@@ -546,7 +546,8 @@ textarea {
   -webkit-box-align: center;
   align-items: center;
   box-sizing: border-box;
-  z-index: 99;
+  z-index: 150;
+  height: 1rem;
 }
 .flex-row p{
   display: flex;
@@ -798,6 +799,10 @@ textarea {
 .cartype-wrap,.color-wrap,.money-wrap{
   background: #f4f4f4;
 }
+.cartype-wrap{
+  overflow-y: scroll;
+  padding-top: 1.1rem;
+}
 .money-list{
   width: 100%;
   height: 100%;
@@ -807,4 +812,79 @@ textarea {
   padding-bottom: 1rem;
 }
 
+.img-box{
+  width: 100%;
+  background: #fff;
+  position: relative;
+}
+.img-box-ul{
+   display: flex;
+   flex-wrap: wrap;
+}
+.img-box-ul li{
+   width: 2.46rem;
+   height: 2.46rem;
+   padding: .02rem;
 
+   
+}
+.img-box-ul li img{
+   width: 100%;
+   height: 100%;
+   background-size: cover;
+}
+
+.cartyp-div{
+  width: 2.46rem;
+  height: 2.46rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  text-align: center;
+  background: rgba(56,90,130,.5);
+  z-index: 130;
+}
+.cartyp-div p{
+  color: #fff;
+  display: block;
+}
+.cartyp-div p:first-child {
+  font-size: .28rem;
+  margin-top: .8rem;
+}
+.cartyp-div p:nth-child(2) {
+  font-size: .26rem;
+}
+
+/* .img-default{
+ 
+}
+.img-default-ul{
+  
+}
+.img-default-ul li{
+  display: inline-block;
+  width: 33%;
+}
+.img-default-ul li img{
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+.cartyp-div{
+  position: absolute;
+  top: 0;
+  text-align: center;
+  background: rgba(56,90,130,.5);
+}
+.cartyp-div p{
+  color: #fff;
+  display: block;
+}
+.cartyp-div p:first-child {
+  font-size: .28rem;
+  margin-top: .8rem;
+}
+.cartyp-div p:nth-child(2) {
+  font-size: .26rem;
+} */

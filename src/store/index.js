@@ -7,7 +7,9 @@ import inquiry from './module/inquiry';
 import lazyLoad from './module/lazyLoad';
 import city from './module/city';
 import color from './module/color';
-import money from './module/money'
+import money from './module/money';
+import sample from './module/sample';
+// import colourChoose from './module/colourChoose'
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -28,7 +30,9 @@ export default new Vuex.Store({
     lazyLoad,
     city,
     color,
-    money
+    money,
+    sample,
+    // colourChoose
   },
   plugins: [Logger()]
 });

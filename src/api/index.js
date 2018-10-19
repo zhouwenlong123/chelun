@@ -95,7 +95,40 @@ export let getcolorlist = (id) =>{
  * @param {any} id 
  */
 export let getcarlist = (id) =>{
-    return sendRequest(`/v2-car-getInfoAndListById.html?SerialID=${id}`)
-    
+    return sendRequest(`/v2-car-getInfoAndListById.html?SerialID=${id}`)   
 }
+/**
+ * 外观 空间 内饰 。。。等数据
+ * @param {any} id 
+ * @returns 
+ */
+export let getsamplelist = (params) => {
+  if(params.ColorId) {
+    return sendRequest(`/v2-car-getImageList.html?SerialID=${params.SerialID}&ColorId=${params.ColorId}`)
+  } else{
+    return sendRequest(`/v2-car-getImageList.html?SerialID=${params}`)
+  }
+  // return sendRequest(`/v2-car-getImageList.html?SerialID=${id}`)
+}
+
+/**
+ * 颜色挑选
+ * @returns 
+ */
+// export let getcolourChoose =(params) =>{
+  
+//   // if(typeof(id) == 'string'){
+//   //   return sendRequest(`/v2-car-getImageList.html?SerialID=${id}`)
+//   // }else{
+//   //   return sendRequest(`/v2-car-getImageList.html?SerialID=${id}&ColorID=${id}`)
+//   // }
+// }
+
+/**
+ * 车系挑选
+ * @returns 
+ */
+// export let getCarsystemChoose =(id) =>{
+//   return sendRequest(`/v2-car-getImageList.html?SerialID=2593&CarID=${id}`)
+// }
 

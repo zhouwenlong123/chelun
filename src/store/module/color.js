@@ -2,20 +2,18 @@ import {getcolorlist} from '../../api/index';
 
 const state = {
     colorList:[],
-    obj:[],
-    list:[]
+    obj:[]
 }
 
 //同步
 const mutations = {
   updatacolor(state,payload){
     state.colorList = payload; //总数据
-    // console.log('payload1',payload)
+    console.log('payload1',payload)
     const obj = Object.keys(payload);//取值年份
     state.obj =obj;
     // console.log('obj',obj)
   }
-  
 }
 
 // 异步

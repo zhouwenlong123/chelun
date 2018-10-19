@@ -45,11 +45,11 @@ let router =  new Routervue({
       name: 'money',
       component: money
     },
-    // {
-    //   path: '/lazyLoad',
-    //   name: 'lazyLoad',
-    //   component: lazyLoad
-    // },
+    {
+      path: '/lazyLoad',
+      name: 'lazyLoad',
+      component: lazyLoad
+    },
     {
       path: '/cartype',
       name: 'cartype',

@@ -6,7 +6,7 @@
                <span v-for="(item,index) in obj" @click="oncolor(index)" :key="index" :data-index="index" :class="index == ind?'typeAction':''">{{item}}</span>
             </p>
             <ul class="c-type-ul">
-                <li v-for="(item,index) in list">
+                <li v-for="(item,index) in list" @click="oncolorvalue(item.ColorId,item.Name)">
                     <span :style="`background:${item.Value}`"></span>
                     {{item.Name}}
                 </li>
@@ -26,21 +26,32 @@ export default {
   },
   computed: {
     ...mapState({
-      colorList: state => state.color.colorList,
-      obj: state => state.color.obj
+      colorList: state => state.color.colorList, //总数据
+      obj: state => state.color.obj, //年份
     }),
     list() {
-      return this.colorList[this.obj[this.num]]
+      return this.colorList[this.obj[this.num]] //颜色
     }
   },
   methods: {
+    ...mapActions({
+      //  getcolorlists:"color/getcolorlists"
+    }),
     oncolor(index){
       this.num = index;
       this.ind = index;
     },
+    oncolorvalue(ColorId,Name){
+      this.$router.push({path:'/cartype',query:{
+         ColorId,
+         Name,
+         SerialID:this.$route.query.id
+      }})  
+    } 
   },
   mounted() {
-    
+    // this.colorList()
+    // console.log(this.$route.query.id)
   }
 };
 </script>

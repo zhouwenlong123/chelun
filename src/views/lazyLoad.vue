@@ -27,7 +27,7 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper';
 export default {
   data() {
     return {
-     
+       id:null
     };
   },
   components:{
@@ -51,7 +51,7 @@ export default {
           slideChange:function(){
             if(this.activeIndex > (that.Page-1)*30-5){
               that.getlazyImgList({
-                SerialID: 2593,
+                SerialID: this.id,
                 ImageID: 6
               })
             }
@@ -85,7 +85,7 @@ export default {
         !this.isFetching
       ) {
         this.getlazyImgList({
-          SerialID: 2593,
+          SerialID: this.id,
           ImageID: 6
         });
       }
@@ -108,9 +108,11 @@ export default {
       }
   },
   mounted() {
+    this.id = this.$route.query.id;//接收点击轮播时的id
+    // console.log('id',this.$route.query.id)
     // console.log('getlazyImgList',this.getlazyImgList)
     this.getlazyImgList({
-      SerialID: 2593,
+      SerialID: this.id,
       ImageID: 6
     });
   },
